@@ -7,8 +7,8 @@ ELSE ()
 ENDIF ()
 
 project(hello
-        VERSION "0.1.${HELLO_BUILD_NUMBER}.0"
-        DESCRIPTION "Hello World"
+        VERSION "0.1.${HELLO_BUILD_NUMBER}"
+        DESCRIPTION "Prints Hello World"
         HOMEPAGE_URL "https://wernerstrydom.com"
         LANGUAGES C)
 
@@ -98,3 +98,10 @@ configure_file (
 set (CPACK_PROJECT_CONFIG_FILE "${PROJECT_BINARY_DIR}/${PACKAGE_NAME}-package.cmake")
 
 INCLUDE(CPack)
+
+
+get_cmake_property(_variableNames VARIABLES)
+list (SORT _variableNames)
+foreach (_variableName ${_variableNames})
+    message(STATUS "${_variableName}=${${_variableName}}")
+endforeach()
