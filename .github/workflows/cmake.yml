@@ -20,6 +20,20 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
+    - name: Install NSIS
+      if: matrix.os == 'windows-latest'
+      run: |
+        iwr -useb get.scoop.sh -outfile 'install.ps1'
+        .\install.ps1 -RunAsAdmin
+        scoop update
+        scoop bucket add extras
+        scoop install nsis
+    
+    - name: Print NSIS version
+      if: matrix.os == 'windows-latest'
+      run: makensis -VERSION
+
+
     - name: Configure CMake
       run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
 
