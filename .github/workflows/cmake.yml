@@ -8,6 +8,7 @@ on:
 
 env:
   BUILD_TYPE: Release
+  BUILD_NUMBER: ${{ env.GITHUB_RUN_NUMBER }}
 
 jobs:
   build:

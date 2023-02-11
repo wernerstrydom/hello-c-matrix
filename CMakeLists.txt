@@ -1,5 +1,16 @@
 cmake_minimum_required(VERSION 3.24)
-project(hello C)
+
+IF (DEFINED ENV{BUILD_NUMBER})
+    set(HELLO_BUILD_NUMBER $ENV{BUILD_NUMBER})
+ELSE ()
+    set(HELLO_BUILD_NUMBER 1)
+ENDIF ()
+
+project(hello
+        VERSION "0.1.${HELLO_BUILD_NUMBER}.0"
+        DESCRIPTION "Hello World"
+        HOMEPAGE_URL "https://wernerstrydom.com"
+        LANGUAGES C)
 
 set(CMAKE_C_STANDARD 99)
 
