@@ -20,6 +20,8 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/../opt/hello/bin)
 
 add_executable(hello main.c)
 
+install(TARGETS hello DESTINATION bin COMPONENT core)
+
 if (WINDOWS)
     if (CMAKE_CL_64)
         set (CPACK_SYSTEM_NAME "win64")
