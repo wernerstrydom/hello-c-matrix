@@ -81,6 +81,9 @@ jobs:
         with:
           path:  ${{github.workspace}}/dist/
 
+      - name: List files
+        run: ls -la ${{github.workspace}}/dist/
+
       - name: Upload Release
         run: gh release create --prerelease --latest --title "v0.1.${{github.run_number}}" --generate-notes "v0.1.${{github.run_number}}" ${{github.workspace}}/dist/*
         env:
