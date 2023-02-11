@@ -25,6 +25,11 @@ jobs:
       env:
         BUILD_NUMBER: ${{ github.run_number }}
 
+    - name: Debug
+      run: cmake -LAH -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
+      env:
+        BUILD_NUMBER: ${{ github.run_number }}      
+
     - name: Build
       run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}
       env:
